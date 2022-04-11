@@ -26,6 +26,24 @@ function init() {
   // Create a new Leaflet map centered on the continental US
   map = L.map("map").setView([51.5, -0.1], 14);
 
+  // Locate User
+	function onLocationFound(e) {
+					var radius = e.accuracy;
+
+					currentMarker = L.marker(e.latlng).addTo(mymap).bindPopup("Βρίσκεστε σε ακτίνα " + radius + " μέτρων από αυτό το σημείο").openPopup();
+
+					L.circle(e.latlng, radius).addTo(mymap);
+				}
+	function onLocationError(e) {
+					alert(e.message);
+	}
+				
+	map.locate({setView: true, maxZoom: 16});
+
+	map.on('locationfound', onLocationFound);
+
+	map.on('locationerror', onLocationError);
+  
   // This is the Carto Positron basemap
   L.tileLayer(
     "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}{r}.png",
