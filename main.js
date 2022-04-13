@@ -23,19 +23,31 @@ let panelID = "my-info-panel";
  * init() is called when the page has loaded
  */
 function init() {
-  // Create a new Leaflet map centered on the continental US
-  map = L.map("map").setView([51.5, -0.1], 14);
+  	// Create a new Leaflet map centered on the continental US
+ 	map = L.map("map").setView([51.5, -0.1], 14);
 
-  // Locate User
+	var currentMarker = {};
+	
+	function onMapClick(e) {
+		popup
+		.setLatLng(e.latlng)
+		.setContent(e.latlng.toString())
+		.openOn(mymap);
+
+	}
+
+	map.on('click', onMapClick);
+	
+  	// Locate User
 	function onLocationFound(e) {
-					var radius = e.accuracy;
+		var radius = e.accuracy;
 
-					currentMarker = L.marker(e.latlng).addTo(mymap).bindPopup("Βρίσκεστε σε ακτίνα " + radius + " μέτρων από αυτό το σημείο").openPopup();
+		currentMarker = L.marker(e.latlng).addTo(mymap).bindPopup("Βρίσκεστε σε ακτίνα " + radius + " μέτρων από αυτό το σημείο").openPopup();
 
-					L.circle(e.latlng, radius).addTo(mymap);
-				}
+		L.circle(e.latlng, radius).addTo(mymap);
+	}
 	function onLocationError(e) {
-					alert(e.message);
+		alert(e.message);
 	}
 				
 	map.locate({setView: true, maxZoom: 16});
