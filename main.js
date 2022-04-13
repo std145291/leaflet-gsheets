@@ -32,7 +32,7 @@ function init() {
 		popup
 		.setLatLng(e.latlng)
 		.setContent(e.latlng.toString())
-		.openOn(mymap);
+		.openOn(map);
 
 	}
 
@@ -42,9 +42,9 @@ function init() {
 	function onLocationFound(e) {
 		var radius = e.accuracy;
 
-		currentMarker = L.marker(e.latlng).addTo(mymap).bindPopup("Βρίσκεστε σε ακτίνα " + radius + " μέτρων από αυτό το σημείο").openPopup();
+		currentMarker = L.marker(e.latlng).addTo(map).bindPopup("Βρίσκεστε σε ακτίνα " + radius + " μέτρων από αυτό το σημείο").openPopup();
 
-		L.circle(e.latlng, radius).addTo(mymap);
+		L.circle(e.latlng, radius).addTo(map);
 	}
 	function onLocationError(e) {
 		alert(e.message);
