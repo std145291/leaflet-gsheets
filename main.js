@@ -19,7 +19,7 @@ let map;
 let sidebar;
 let panelID = "my-info-panel";
 let currentMarker = {};
-
+let popup = L.popup();
 /*
  * init() is called when the page has loaded
  */
