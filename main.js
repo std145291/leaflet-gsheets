@@ -19,24 +19,13 @@ let map;
 let sidebar;
 let panelID = "my-info-panel";
 let currentMarker = {};
-let popup = L.popup();
 /*
  * init() is called when the page has loaded
  */
 function init() {
   	// Create a new Leaflet map centered on the continental US
  	map = L.map("map").setView([51.5, -0.1], 14);
-	
-	function onMapClick(e) {
-		popup
-		.setLatLng(e.latlng)
-		.setContent(e.latlng.toString())
-		.openOn(map);
-
-	}
-
-//	map.on('dblclick', onMapClick);
-	
+		
   	// Locate User
 	function onLocationFound(e) {
 		var radius = e.accuracy;
