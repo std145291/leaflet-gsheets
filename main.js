@@ -35,7 +35,7 @@ function init() {
 
 	}
 
-	map.on('dblclick', onMapClick);
+//	map.on('dblclick', onMapClick);
 	
   	// Locate User
 	function onLocationFound(e) {
