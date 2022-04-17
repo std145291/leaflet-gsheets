@@ -182,7 +182,14 @@ function addPoints(data) {
     } else {
       marker = L.marker([data[row].lat, data[row].lon]);
     }
-    marker.addTo(pointGroupLayer);
+
+    let from = currentMarker.getLatLng();	  
+    let to = marker.getLatLng();	
+    
+    if ((from.distanceTo(to)).toFixed(0)/1000 < 1000){
+	  
+    	marker.addTo(pointGroupLayer);
+    }
 
     // UNCOMMENT THIS LINE TO USE POPUPS
     marker.bindPopup('<h2>' + data[row].name + '</h2>There is a ' + data[row].description + ' here');
