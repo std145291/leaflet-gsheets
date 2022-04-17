@@ -176,7 +176,7 @@ function addPoints(data) {
   let markerType = "marker";
 
   // Marker radius
-  // Wil be in pixels for circleMarker, metres for circle
+  // Will be in pixels for circleMarker, metres for circle
   // Ignore for point
   let markerRadius = 100;
 
@@ -196,7 +196,7 @@ function addPoints(data) {
     marker.addTo(pointGroupLayer);
 
     // UNCOMMENT THIS LINE TO USE POPUPS
-    //marker.bindPopup('<h2>' + data[row].name + '</h2>There's a ' + data[row].description + ' here');
+    marker.bindPopup('<h2>' + data[row].name + '</h2>There's a ' + data[row].description + ' here');
 
     // COMMENT THE NEXT GROUP OF LINES TO DISABLE SIDEBAR FOR THE MARKERS
     marker.feature = {
